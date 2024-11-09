@@ -1,0 +1,15 @@
+# Batch mode
+batch
+
+# Update the datasource configuration
+/subsystem=datasources/data-source=stavigoportal:write-attribute(name=connection-url, value="jdbc:mysql://$ENV.DB_HOST:$ENV.DB_PORT/$ENV.DB_NAME")
+#/subsystem=datasources/data-source=stavigoportal/security=security-domain:write-attribute(name=user-name, value="$ENV.CONNECTION_URL")
+/subsystem=datasources/data-source=stavigoportal/security=security-domain:write-attribute(name=user-name, value="$ENV.DB_USER")
+/subsystem=datasources/data-source=stavigoportal/security=security-domain:write-attribute(name=user-password, value="$ENV.DB_PASSWORD")
+
+# Run the batch
+run-batch
+
+# Reload the server configuration
+:reload
+

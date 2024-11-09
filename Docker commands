@@ -1,0 +1,80 @@
+Here's a list of essential Docker commands, grouped by functionality:
+
+1. Container Management:
+   ```
+   docker run       # Create and start a new container
+   docker start     # Start an existing container
+   docker stop      # Stop a running container
+   docker restart   # Restart a container
+   docker pause     # Pause a running container
+   docker unpause   # Unpause a paused container
+   docker rm        # Remove a container
+   docker exec      # Execute a command in a running container
+   docker attach    # Attach to a running container
+   docker logs      # Fetch the logs of a container
+   docker inspect   # Display detailed information on a container
+   docker ps        # List running containers
+   docker ps -a     # List all containers (including stopped)
+   ```
+
+2. Image Management:
+   ```
+   docker pull      # Pull an image from a registry
+   docker push      # Push an image to a registry
+   docker build     # Build an image from a Dockerfile
+   docker images    # List images
+   docker rmi       # Remove an image
+   docker tag       # Create a tag for an image
+   docker save      # Save an image to a tar archive
+   docker load      # Load an image from a tar archive
+   docker import    # Import the contents from a tarball to create an image
+   ```
+
+3. Network Management:
+   ```
+   docker network create    # Create a network
+   docker network connect   # Connect a container to a network
+   docker network disconnect # Disconnect a container from a network
+   docker network ls        # List networks
+   docker network rm        # Remove a network
+   docker network inspect   # Display detailed information on a network
+   ```
+
+4. Volume Management:
+   ```
+   docker volume create    # Create a volume
+   docker volume ls        # List volumes
+   docker volume rm        # Remove a volume
+   docker volume inspect   # Display detailed information on a volume
+   ```
+
+5. System & Docker Daemon:
+   ```
+   docker info      # Display system-wide information
+   docker version   # Show the Docker version information
+   docker events    # Get real time events from the server
+   docker system df # Show docker disk usage
+   docker system prune # Remove unused data
+   ```
+
+6. Docker Compose:
+   ```
+   docker-compose up     # Create and start containers
+   docker-compose down   # Stop and remove containers, networks, images, and volumes
+   docker-compose start  # Start services
+   docker-compose stop   # Stop services
+   docker-compose build  # Build or rebuild services
+   docker-compose logs   # View output from containers
+   ```
+
+7. Docker Swarm:
+   ```
+   docker swarm init     # Initialize a swarm
+   docker swarm join     # Join a swarm as a node or manager
+   docker swarm leave    # Leave the swarm
+   docker service create # Create a new service
+   docker service ls     # List services
+   docker service rm     # Remove a service
+   ```
+
+Would you like me to elaborate on any specific command or group of commands?

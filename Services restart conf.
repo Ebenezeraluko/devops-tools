@@ -1,0 +1,8 @@
+Set the services to restart automatically whenever it is down
+
+sudo vim /etc/systemd/system/wildfly.service
+
+add this line:
+Restart=always
+RestartSec=5
+

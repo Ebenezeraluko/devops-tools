@@ -1,0 +1,3 @@
+Network connectivity tools
+sudo netstat -tap | grep mysql - command to check server connectivity
+ps aux | grep mysql - command to check processes that are running

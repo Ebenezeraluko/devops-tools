@@ -1,0 +1,56 @@
+If your Ubuntu server doesn't have a firewall enabled, you typically don't need to explicitly permit port 3306 (the default MySQL port) on the local server. However, you'll need to configure MySQL to allow remote connections and ensure the remote server can reach your local server. Here's how to set this up:
+
+1. Configure MySQL to allow remote connections:
+
+   a. Edit the MySQL configuration file:
+   ```
+   sudo nano /etc/mysql/mysql.conf.d/mysqld.cnf
+   ```
+
+   b. Find the line that says `bind-address = 127.0.0.1` and change it to:
+   ```
+   bind-address = 0.0.0.0
+   ```
+   This allows MySQL to listen on all network interfaces.
+
+2. Restart MySQL to apply the changes:
+   ```
+   sudo systemctl restart mysql
+   ```
+
+3. Create a MySQL user that can connect from the remote server:
+   ```
+   sudo mysql
+   ```
+   Then in the MySQL prompt:
+   ```sql
+   CREATE USER 'remote_user'@'remote_server_ip' IDENTIFIED BY 'password';
+   GRANT ALL PRIVILEGES ON *.* TO 'remote_user'@'remote_server_ip';
+   FLUSH PRIVILEGES;
+   EXIT;
+   ```
+   Replace 'remote_user', 'remote_server_ip', and 'password' with appropriate values.
+
+4. Ensure there's no network-level blocking:
+   - Check if there's any network-level firewall (like a cloud provider's firewall) blocking port 3306.
+   - If there is, you'll need to open that port in the network firewall settings.
+
+5. On the remote server, test the connection:
+   ```
+   mysql -u remote_user -p -h local_server_ip
+   ```
+   Replace 'remote_user' and 'local_server_ip' with the appropriate values.
+
+6. If you decide to enable a firewall later, you can use UFW (Uncomplicated Firewall):
+   ```
+   sudo ufw allow 3306/tcp
+   sudo ufw enable
+   ```
+
+Additional security considerations:
+- It's generally more secure to use a firewall and only open necessary ports.
+- Consider using SSH tunneling for MySQL connections instead of exposing MySQL directly.
+- Use strong passwords and limit user privileges as much as possible.
+- Regularly update and patch your system and MySQL installation.
+
+Would you like more information on any of these steps or additional security measures?

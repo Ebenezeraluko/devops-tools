@@ -1,0 +1,23 @@
+#Retrieve the public key from the key pair that you created in the previous step.
+ssh-keygen -y -f /path_to_key_pair/key-pair-name.pem
+
+#create a user however, --disabled-password
+sudo adduser newuser 
+sudo adduser newuser --disabled-password
+
+#switch to the new user
+sudo su - newuser
+
+#Create a .ssh directory in the newuser home directory and change its file permissions to 700 (only the owner can read, write, or open the directory)
+mkdir .ssh
+chmod 700 .ssh
+
+#Create a file named authorized_keys in the .ssh directory and change its file permissions to 600 (only the owner can read or write to the file).
+touch .ssh/authorized_keys
+chmod 600 .ssh/authorized_keys
+
+#paste the retrieved key in authorized key
+vim .ssh/authorized_keys
+
+#REMOVE A USER
+sudo userdel -r olduser
