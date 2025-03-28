@@ -21,3 +21,5 @@ vim .ssh/authorized_keys
 
 #REMOVE A USER
 sudo userdel -r olduser
+
+

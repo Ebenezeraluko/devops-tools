@@ -75,6 +75,8 @@ Here's a list of essential Docker commands, grouped by functionality:
    docker service create # Create a new service
    docker service ls     # List services
    docker service rm     # Remove a service
-   ```
 
-Would you like me to elaborate on any specific command or group of commands?
+  To access a docker container on a server remotely from your local machine, kindly run this command 
+  export DOCKER_HOST="ssh://root@server publicIP"
+  
+  
